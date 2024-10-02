@@ -56,4 +56,4 @@ export default function PostPage() {
         <CallToAction />
     </div>
   </main>;
-}
+}  
