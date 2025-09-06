@@ -1,31 +1,38 @@
-import { Button } from 'flowbite-react';
+import { Button } from 'flowbite-react'; // Importing Button component from Flowbite for styling.
 
 export default function CallToAction() {
   return (
-    <div className='flex border border-teal-500 p-3 justify-center items-center rounded-tl-3xl rounded-br-3xl flex-col sm:flex-row text-center'>
-      <div className='flex-1 justify-center flex flex-col'>
+    <div className='flex flex-col sm:flex-row p-3 border border-teal-500 justify-center items-center rounded-tl-3xl rounded-br-3xl text-center'>
+      {/* Container for the call-to-action section with responsive flex layout and styling */}
+      
+      <div className="flex-1 justify-center flex flex-col">
+        {/* Flex container for the text content, set to take available space */}
+        
         <h2 className='text-2xl'>
-          Want to learn HTML, CSS and JavaScript by building fun and engaging
-          projects?
+          Want to learn more about JavaScript?
         </h2>
+        {/* Main headline encouraging users to learn more */}
+        
         <p className='text-gray-500 my-2'>
-          Check our 100 js projects website and start building your own projects
+          Checkout these resources with 100 JavaScript Projects
         </p>
-        <a
-          href='https://www.100jsprojects.com/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Button
-            gradientDuoTone='purpleToPink'
-            className='rounded-tl-xl rounded-bl-none rounded-br-xl w-full'
-          >
-            100 JS Projects Website
-          </Button>
-        </a>
+        {/* Description of what the user can expect from the resources */}
+        
+        <Button gradientDuoTone='purpleToPink' className='rounded-tl-xl rounded-bl-none'>
+          {/* Button with a gradient style, rounded corners */}
+          <a href="https://www.100jsprojects.com" target='_blank' rel='noopener noreferrer'>
+            {/* Link to the resource, opens in a new tab with security attributes */}
+            100 JavaScript Projects
+          </a>
+        </Button>
       </div>
-      <div className='flex-1 p-7'>
-        <img src='https://media.geeksforgeeks.org/wp-content/cdn-uploads/20221114110410/Top-10-JavaScript-Project-Ideas-For-Beginners-2023.png' />
+      
+      <div className="p-7 flex-1">
+        {/* Flex container for the image, set to take available space */}
+        <img 
+          src="https://bairesdev.mo.cloudinary.net/blog/2023/08/What-Is-JavaScript-Used-For.jpg" 
+          alt="JavaScript Projects" // Added alt attribute for accessibility
+        />
       </div>
     </div>
   );

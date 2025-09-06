@@ -1,2 +1,0 @@
-MONGO_URI = 'mongodb+srv://georgedarko127:mern-blog@mern-blog.eyvyyga.mongodb.net/?retryWrites=true&w=majority&appName=mern-blog'
-JWT_SECRET = 'TKOLOOP'
