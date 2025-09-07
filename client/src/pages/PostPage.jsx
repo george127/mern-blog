@@ -2,7 +2,6 @@
 import { Button, Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import CallToAction from '../components/CallToAction';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
 
@@ -61,24 +60,28 @@ export default function PostPage() {
   // If still loading, show the spinner
   if (loading)
     return (
-      <div className='flex justify-center items-center min-h-screen'>
+      <div className='flex items-center justify-center min-h-screen'>
         <Spinner size='xl' />
       </div>
     );
 
   return (
-    <main className='p-3 flex flex-col max-w-6xl mx-auto min-h-screen'>
+    <main className="flex flex-col max-w-6xl min-h-screen p-3 mx-auto text-slate-900">
       {/* Post Title */}
-      <h1 className='text-3xl mt-10 p-3 text-center font-serif max-w-2xl mx-auto lg:text-4xl'>
+      <h1 className="max-w-2xl p-3 mx-auto mt-10 font-serif text-3xl text-center text-purple-500 lg:text-4xl">
         {post && post.title}
       </h1>
 
-      {/* Post Category as a link to filter by category */}
+      {/* Post Category */}
       <Link
         to={`/search?category=${post && post.category}`}
-        className='self-center mt-5'
+        className="self-center mt-5"
       >
-        <Button color='gray' pill size='xs'>
+        <Button
+          pill
+          size="xs"
+          className="transition-all border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-white"
+        >
           {post && post.category}
         </Button>
       </Link>
@@ -87,35 +90,32 @@ export default function PostPage() {
       <img
         src={post && post.image}
         alt={post && post.title}
-        className='mt-10 p-3 max-h-[600px] w-full object-cover'
+        className="mt-10 p-3 max-h-[600px] w-full object-cover rounded-xl shadow-lg border border-slate-300"
       />
 
-      {/* Post metadata - created date and estimated reading time */}
-      <div className='flex justify-between p-3 border-b border-slate-500 mx-auto w-full max-w-2xl text-xs'>
+      {/* Post Metadata */}
+      <div className="flex justify-between w-full max-w-2xl p-3 mx-auto text-xs text-gray-600 border-b border-slate-800">
         <span>{post && new Date(post.createdAt).toLocaleDateString()}</span>
-        <span className='italic'>
+        <span className="italic">
           {post && (post.content.length / 1000).toFixed(0)} mins read
         </span>
       </div>
 
-      {/* Post content - rendered as HTML */}
+      {/* Post Content */}
       <div
-        className='p-3 max-w-2xl mx-auto w-full post-content'
+        className="w-full max-w-2xl p-3 mx-auto leading-relaxed text-gray-500 post-content"
         dangerouslySetInnerHTML={{ __html: post && post.content }}
       ></div>
 
-      {/* Call to Action component */}
-      <div className='max-w-4xl mx-auto w-full'>
-        <CallToAction />
-      </div>
-
-      {/* Comment section */}
+      {/* Comment Section */}
       <CommentSection postId={post._id} />
 
       {/* Recent Posts */}
-      <div className='flex flex-col justify-center items-center mb-5'>
-        <h1 className='text-xl mt-5'>Recent articles</h1>
-        <div className='flex flex-wrap gap-5 mt-5 justify-center'>
+      <div className="flex flex-col items-center justify-center mb-5">
+        <h1 className="mt-5 text-xl font-semibold text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text">
+          Recent Articles
+        </h1>
+        <div className="flex flex-wrap justify-center gap-5 mt-5">
           {recentPosts &&
             recentPosts.map((post) => (
               <PostCard key={post._id} post={post} />
@@ -123,5 +123,6 @@ export default function PostPage() {
         </div>
       </div>
     </main>
+
   );
 }

@@ -179,155 +179,140 @@ export default function DashProfile() {
 
   return (
     // Main container for the profile page with responsive width and padding
-    <div className='max-w-lg mx-auto p-3 w-full'>
+    <div className="w-full max-w-lg p-3 mx-auto">
       {/* Header for the profile section */}
-      <h1 className='my-7 text-center font-semibold text-3xl'>Profile</h1>
+      <h1 className="text-2xl font-semibold text-center text-transparent my-7 bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text">
+        Profile
+      </h1>
+
       {/* Form for updating user profile information */}
-      <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        {/* Input for file upload, hidden by default, only accepts image files */}
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        {/* Hidden input for file upload */}
         <input
-          type='file'
-          accept='image/*'
-          onChange={handleImageChange} // Event handler for when an image is selected
-          ref={filePickerRef} // Reference for the input to trigger a click
-          hidden // Hides the file input element
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          ref={filePickerRef}
+          hidden
         />
-        {/* Container for the user's profile picture with click functionality to trigger file picker */}
+
+        {/* Profile Picture Upload */}
         <div
-          className='relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full'
-          onClick={() => filePickerRef.current.click()} // Click opens the file picker
+          className="relative self-center w-32 h-32 overflow-hidden rounded-full shadow-md cursor-pointer border-1 border-slate-200"
+          onClick={() => filePickerRef.current.click()}
         >
-          {/* Circular progress bar to show upload progress */}
           {imageFileUploadProgress && (
             <CircularProgressbar
-              value={imageFileUploadProgress || 0} // Sets the progress value
-              text={`${imageFileUploadProgress}%`} // Displays the percentage
-              strokeWidth={5} // Width of the progress stroke
+              value={imageFileUploadProgress || 0}
+              text={`${imageFileUploadProgress}%`}
+              strokeWidth={5}
               styles={{
-                root: {
-                  width: '100%', // Full width of the container
-                  height: '100%', // Full height of the container
-                  position: 'absolute', // Absolute positioning for layering
-                  top: 0,
-                  left: 0,
-                },
+                root: { width: "100%", height: "100%", position: "absolute", top: 0, left: 0 },
                 path: {
-                  stroke: `rgba(62, 152, 199, ${imageFileUploadProgress / 100})`, // Color of the progress path based on progress
+                  stroke: `rgba(62, 152, 199, ${imageFileUploadProgress / 100})`,
                 },
               }}
             />
           )}
-          {/* Image display for user profile picture, showing either uploaded or current user's picture */}
           <img
-            src={imageFileUrl || currentUser.profilePicture} // Source for the image, either uploaded or current
-            alt='user' // Alt text for accessibility
-            className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] ${
-              imageFileUploadProgress &&
-              imageFileUploadProgress < 100 && // Reduces opacity while uploading
-              'opacity-60'
-            }`}
+            src={imageFileUrl || currentUser.profilePicture}
+            alt="user"
+            className={`rounded-full w-full h-full object-cover border-8 border-slate-900 ${imageFileUploadProgress && imageFileUploadProgress < 100 && "opacity-60"
+              }`}
           />
         </div>
-        {/* Displays error message for image upload, if any */}
-        {imageFileUploadError && (
-          <Alert color='failure'>{imageFileUploadError}</Alert>
-        )}
-        {/* Input field for username with default value from current user */}
+
+        {/* Error message for image upload */}
+        {imageFileUploadError && <Alert color="failure">{imageFileUploadError}</Alert>}
+
+        {/* Inputs */}
         <TextInput
-          type='text'
-          id='username' // Unique identifier for the input
-          placeholder='username' // Placeholder text for the input
-          defaultValue={currentUser.username} // Default value set to current user's username
-          onChange={handleChange} // Event handler for input changes
+          type="text"
+          id="username"
+          placeholder="username"
+          defaultValue={currentUser.username}
+          onChange={handleChange}
         />
-        {/* Input field for email with default value from current user */}
         <TextInput
-          type='email'
-          id='email' // Unique identifier for the input
-          placeholder='email' // Placeholder text for the input
-          defaultValue={currentUser.email} // Default value set to current user's email
-          onChange={handleChange} // Event handler for input changes
+          type="email"
+          id="email"
+          placeholder="email"
+          defaultValue={currentUser.email}
+          onChange={handleChange}
         />
-        {/* Input field for password with no default value */}
         <TextInput
-          type='password'
-          id='password' // Unique identifier for the input
-          placeholder='password' // Placeholder text for the input
-          onChange={handleChange} // Event handler for input changes
+          type="password"
+          id="password"
+          placeholder="password"
+          onChange={handleChange}
         />
-        {/* Button to submit the form for updating user information */}
+
+        {/* Update Button */}
         <Button
-          type='submit' // Specifies the button type as submit
-          gradientDuoTone='purpleToBlue' // Button color gradient
-          outline // Outline style for the button
-          disabled={loading || imageFileUploading} // Button is disabled if loading or uploading
+          type="submit"
+          gradientDuoTone="purpleToBlue"
+          outline
+          disabled={loading || imageFileUploading}
+          className="font-semibold text-purple-500 hover:text-white"
         >
-          {loading ? 'Loading...' : 'Update'} {/* Button text changes based on loading state */}
+          {loading ? "Loading..." : "Update"}
         </Button>
-        {/* Button to create a post, visible only for admin users */}
+
+        {/* Admin Create Post Button */}
         {currentUser.isAdmin && (
-          <Link to={'/create-post'}>
+          <Link to={"/create-post"}>
             <Button
-              type='button' // Specifies the button type as button
-              gradientDuoTone='purpleToPink' // Button color gradient
-              className='w-full' // Full width for the button
+              type="button"
+              gradientDuoTone="purpleToPink"
+              className="w-full font-semibold text-white"
             >
               Create a post
             </Button>
           </Link>
         )}
       </form>
-      {/* Container for delete account and sign out options */}
-      <div className='text-red-500 flex justify-between mt-5'>
-        {/* Clickable text to show modal for account deletion */}
-        <span onClick={() => setShowModal(true)} className='cursor-pointer'>
+
+      {/* Delete & Sign Out */}
+      <div className="flex justify-between mt-5 font-medium">
+        <span onClick={() => setShowModal(true)} className="text-red-500 cursor-pointer hover:text-purple-600">
           Delete Account
         </span>
-        {/* Clickable text to sign out user */}
-        <span onClick={handleSignout} className='cursor-pointer'>
+        <span onClick={handleSignout} className="cursor-pointer hover:text-purple-600">
           Sign Out
         </span>
       </div>
-      {/* Displays success message for user updates, if any */}
+
+      {/* Success & Error Messages */}
       {updateUserSuccess && (
-        <Alert color='success' className='mt-5'>
+        <Alert color="success" className="mt-5 text-gray-400">
           {updateUserSuccess}
         </Alert>
       )}
-      {/* Displays error message for user updates, if any */}
       {updateUserError && (
-        <Alert color='failure' className='mt-5'>
+        <Alert color="failure" className="mt-5 text-gray-400">
           {updateUserError}
         </Alert>
       )}
-      {/* Displays error message for other errors, if any */}
       {error && (
-        <Alert color='failure' className='mt-5'>
+        <Alert color="failure" className="mt-5 text-gray-400">
           {error}
         </Alert>
       )}
-      {/* Modal for confirming account deletion */}
-      <Modal
-        show={showModal} // Controls visibility of the modal
-        onClose={() => setShowModal(false)} // Closes the modal on close action
-        popup // Makes the modal look like a popup
-        size='md' // Sets the size of the modal
-      >
-        <Modal.Header /> {/* Header for the modal, empty for this case */}
+
+      {/* Modal */}
+      <Modal show={showModal} onClose={() => setShowModal(false)} popup size="md">
+        <Modal.Header />
         <Modal.Body>
-          <div className='text-center'>
-            {/* Icon indicating caution or warning */}
-            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
-            {/* Confirmation message for account deletion */}
-            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
+          <div className="text-center">
+            <HiOutlineExclamationCircle className="mx-auto mb-4 h-14 w-14 text-cyan-400" />
+            <h3 className="mb-5 text-lg text-gray-400">
               Are you sure you want to delete your account?
             </h3>
-            {/* Buttons for confirming or canceling account deletion */}
-            <div className='flex justify-center gap-4'>
-              <Button color='failure' onClick={handleDeleteUser}>
+            <div className="flex justify-center gap-4">
+              <Button color="failure" onClick={handleDeleteUser}>
                 Yes, I&apos;m sure
               </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
+              <Button color="gray" onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>
@@ -335,7 +320,8 @@ export default function DashProfile() {
         </Modal.Body>
       </Modal>
     </div>
-  );  
+
+  );
 }
 
-  
+

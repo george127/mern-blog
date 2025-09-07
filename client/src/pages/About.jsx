@@ -17,7 +17,7 @@ export default function About() {
           'text-3xl' sets the font size to 3xl (extra-large), 'font-semibold' makes the text bold, 
           'text-center' centers the heading, and 'my-7' adds top and bottom margin for spacing. */}
           <h1 className='text-3xl font-semibold text-center font my-7'>
-            About Sahand&apos; Blog
+            About Geo&apos; Blog
           </h1>
 
           {/* This div wraps the paragraphs describing the blog. 
@@ -28,7 +28,7 @@ export default function About() {
             {/* Paragraph explaining the blog's purpose and introducing Sahand as the author. 
             'Welcome to Sahand&apos;s Blog!' is the introductory line. */}
             <p>
-              Welcome to Sahand&apos;s Blog! This blog was created by Sahand Ghavidel
+              Welcome to Geo&apos;s Blog! This blog was created by George Darko
               as a personal project to share his thoughts and ideas with the
               world. Sahand is a passionate developer who loves to write about
               technology, coding, and everything in between.
@@ -39,7 +39,7 @@ export default function About() {
             <p>
               On this blog, you&apos;ll find weekly articles and tutorials on topics
               such as web development, software engineering, and programming
-              languages. Sahand is always learning and exploring new
+              languages. George is always learning and exploring new
               technologies, so be sure to check back often for new content!
             </p>
 

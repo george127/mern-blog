@@ -65,10 +65,10 @@ export default function Header() {
     <Navbar className='border-b-2'> {/* Creating a Navbar component with a bottom border.*/}
       <Link
         to='/' // Link to navigate to the home page.
-        className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white' // Styling the link.
+        className='self-center text-sm font-semibold whitespace-nowrap sm:text-xl dark:text-white' // Styling the link.
       >
-        <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'> {/* Gradient background for the blog title.*/}
-          Sahand&apos;s
+        <span className='px-2 py-1 text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'> {/* Gradient background for the blog title.*/}
+          Geo&apos;s
         </span>
         Blog {/* Blog title text.*/}
       </Link>
@@ -89,7 +89,7 @@ export default function Header() {
       <div className='flex gap-2 md:order-2'> {/* Container for user actions and theme toggle.*/}
         {/* Button to toggle between light and dark themes.*/}
         <Button
-          className='w-12 h-10 hidden sm:inline' // Showing button only on small screens and larger.
+          className='hidden w-12 h-10 sm:inline' // Showing button only on small screens and larger.
           color='gray' // Button color is gray.
           pill // Button has rounded edges.
           onClick={() => dispatch(toggleTheme())} // Dispatch toggleTheme action on click.

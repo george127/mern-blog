@@ -1,20 +1,3 @@
-/* This code defines a "Create Post" form in a React app, allowing users to create and upload posts with images and content. 
-Here's a simple breakdown:
-
-UI Components: It uses components like text inputs, file inputs, a rich text editor, 
-and buttons to collect post data (title, category, image, and content).
-
-Image Upload to Firebase: The user can select an image, which gets uploaded to Firebase storage. 
-The code shows a progress bar while uploading and stores the image URL in the form data.
-
-Post Submission: When the user submits the form, it sends the collected post data (including the image URL) to an API for saving.
-
-Error Handling: The app displays error messages if the image upload or post submission fails.
-
-Navigation: After successfully creating a post, the app redirects the user to the newly created post page.
-
-In short, this code enables users to create posts with images, edit content using a rich text editor,
- and handles the uploading and saving of post data. */
 
 // Import required components and libraries
 import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react"; // UI components from Flowbite React
@@ -111,12 +94,12 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="p-3 max-w-3xl mx-auto min-h-screen">
-      <h1 className="text-center text-3xl my-7 font-semibold">Create a post</h1>
+    <div className="max-w-3xl min-h-screen p-3 mx-auto">
+      <h1 className="text-3xl font-semibold text-center my-7">Create a post</h1>
       {/* Form for creating a post */}
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
         {/* Title and category selection */}
-        <div className="flex flex-col gap-4 sm:flex-row justify-between">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row">
           <TextInput
             type="text"
             placeholder="Title"
@@ -140,7 +123,7 @@ export default function CreatePost() {
         </div>
 
         {/* Image upload section */}
-        <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
+        <div className="flex items-center justify-between gap-4 p-3 border-4 border-teal-500 border-dotted">
           <FileInput
             type="file"
             accept="image/*"
@@ -176,7 +159,7 @@ export default function CreatePost() {
           <img
             src={formData.image}
             alt="upload"
-            className="w-full h-72 object-cover"
+            className="object-cover w-full h-72"
           />
         )}
 
@@ -184,7 +167,7 @@ export default function CreatePost() {
         <ReactQuill
           theme="snow"
           placeholder="Write something..."
-          className="h-72 mb-12"
+          className="mb-12 h-72"
           required
           onChange={(value) => {
             setFormData({ ...formData, content: value }); // Update form data with the post content

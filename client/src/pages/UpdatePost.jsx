@@ -119,10 +119,10 @@ export default function UpdatePost() {
 
   // Render the component
   return (
-    <div className='p-3 max-w-3xl mx-auto min-h-screen'> {/* Container div with padding and maximum width */}
-      <h1 className='text-center text-3xl my-7 font-semibold'>Update post</h1> {/* Title */}
+    <div className='max-w-3xl min-h-screen p-3 mx-auto'> {/* Container div with padding and maximum width */}
+      <h1 className='text-3xl font-semibold text-center my-7'>Update post</h1> {/* Title */}
       <form className='flex flex-col gap-4' onSubmit={handleSubmit}> {/* Form element */}
-        <div className='flex flex-col gap-4 sm:flex-row justify-between'> {/* Flex container for inputs */}
+        <div className='flex flex-col justify-between gap-4 sm:flex-row'> {/* Flex container for inputs */}
           <TextInput
             type='text'
             placeholder='Title' // Placeholder text
@@ -146,7 +146,7 @@ export default function UpdatePost() {
             <option value='nextjs'>Next.js</option>{ /* Option for Next.js category */}
           </Select>
         </div>
-        <div className='flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3'> {/* Container for file input and upload button */}
+        <div className='flex items-center justify-between gap-4 p-3 border-4 border-teal-500 border-dotted'> {/* Container for file input and upload button */}
           <FileInput
             type='file'
             accept='image/*' // Accept only image files
@@ -177,14 +177,14 @@ export default function UpdatePost() {
           <img
             src={formData.image} // Set the image source to the uploaded image URL
             alt='upload' // Alternative text for the image
-            className='w-full h-72 object-cover' // Styling for the image
+            className='object-cover w-full h-72' // Styling for the image
           />
         )}
         <ReactQuill
           theme='snow' // Set the theme for the rich text editor
           value={formData.content} // Set editor value from formData
           placeholder='Write something...' // Placeholder text for the editor
-          className='h-72 mb-12' // Styling for the editor
+          className='mb-12 h-72' // Styling for the editor
           required // Mark as required
           onChange={(value) => { // Handle changes in the editor
             setFormData({ ...formData, content: value }); // Update formData with the new content value
@@ -199,6 +199,7 @@ export default function UpdatePost() {
           </Alert>
         )}
       </form>
+      <br />
     </div>
   );
 }

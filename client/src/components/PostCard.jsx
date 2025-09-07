@@ -4,32 +4,38 @@ import { Link } from 'react-router-dom';
 // Defining a functional component named PostCard that receives a post object as a prop.
 export default function PostCard({ post }) {
   return (
-    // Outer div that contains the entire post card with styles for borders, dimensions, and transitions.
-    <div className='group relative w-full border border-teal-500 hover:border-2 h-[400px] overflow-hidden rounded-lg sm:w-[430px] transition-all'>
-      {/* Link to navigate to the specific post when clicked. The URL includes the slug of the post. */}
+    // Outer container for the post card
+    <div className="group relative w-full sm:w-[430px] overflow-hidden rounded-xl shadow-md border hover:shadow-purple-500/40 hover:h-[400px] transition-all">
+      {/* Clickable image linking to the post */}
       <Link to={`/post/${post.slug}`}>
-        {/* Image of the post. It has styling for size and cover behavior. 
-            It changes height on hover due to the group class. */}
         <img
-          src={post.image} // Source of the image from the post object
-          alt='post cover' // Alt text for accessibility
-          className='h-[260px] w-full object-cover group-hover:h-[200px] transition-all duration-300 z-20'
+          src={post.image}
+          alt="post cover"
+          className="h-[260px] w-full object-cover group-hover:h-[200px] transition-all duration-300 z-20"
         />
       </Link>
-      {/* Div to hold the title and category of the post, with padding and flex layout. */}
-      <div className='p-3 flex flex-col gap-2'>
-        {/* Title of the post with a maximum of two lines shown. */}
-        <p className='text-lg font-semibold line-clamp-2'>{post.title}</p>
-        {/* Category of the post styled in italics and smaller text. */}
-        <span className='italic text-sm'>{post.category}</span>
-        {/* Link to read the article. Positioned absolutely to allow for hover effects. */}
+
+      {/* Content section */}
+      <div className="flex flex-col gap-2 p-3">
+        {/* Post title */}
+        <p className="text-lg font-semibold text-purple-500 group-hover:text-purple-600 line-clamp-2">
+          {post.title}
+        </p>
+
+        {/* Category */}
+        <span className="text-sm italic text-gray-400">{post.category}</span>
+
+        {/* Read Article button */}
         <Link
-          to={`/post/${post.slug}`} // Link to navigate to the specific post
-          className='z-10 group-hover:bottom-0 absolute bottom-[-200px] left-0 right-0 border border-teal-500 text-teal-500 hover:bg-teal-500 hover:text-white transition-all duration-300 text-center py-2 rounded-md !rounded-tl-none m-2'
+          to={`/post/${post.slug}`}
+          className="absolute bottom-[-200px] left-0 right-0 m-2  text-center  !rounded-tl-none
+          border border-indigo-500
+          hover:bg-indigo-600 hover:text-white transition-all duration-300
+          z-10 group-hover:bottom-0 px-6 py-3 font-medium text-purple-100 rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600"
         >
-          {/* Text for the link that indicates it will take the user to the article. */}
-          Read article
+          Read Article
         </Link>
+
       </div>
     </div>
   );

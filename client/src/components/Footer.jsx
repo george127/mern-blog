@@ -1,79 +1,173 @@
-// Importing necessary components and libraries from Flowbite and React Router.
-import { Footer } from 'flowbite-react'; // Importing the Footer component from Flowbite.
-import { Link } from 'react-router-dom'; // Importing the Link component for routing.
-import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble } from 'react-icons/bs'; // Importing social media icons from react-icons.
+import { Footer } from 'flowbite-react';
+import { Link } from 'react-router-dom';
+import { BsFacebook, BsInstagram, BsTwitter, BsGithub, BsDribbble, BsArrowUp } from 'react-icons/bs';
 
-export default function FooterCom() { // Declaring the FooterCom functional component.
+export default function FooterCom() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <Footer container className='border border-t-8 border-teal-500'> {/* Creating a footer with a top border.*/}
-      <div className='w-full max-w-7xl mx-auto'> {/* Container for content, centering it within a max width.*/}
-        <div className='grid w-full justify-between sm:flex md:grid-cols-1'> {/* Layout for the footer content, responsive grid for smaller screens.*/}
-          <div className='mt-5'> {/* Div for the blog title.*/}
+    <Footer container className="relative text-white border-0 rounded-none bg-gradient-to-br from-slate-700 via-purple-700 to-slate-700">
+      {/* Back to top button */}
+      <button 
+        onClick={scrollToTop}
+        className="absolute p-3 transition-all duration-300 transform -translate-x-1/2 rounded-full shadow-lg -top-5 left-1/2 bg-gradient-to-r from-indigo-500 to-pink-500 hover:from-indigo-600 hover:to-pink-600 hover:-translate-y-1"
+        aria-label="Back to top"
+      >
+        <BsArrowUp className="w-5 h-5" />
+      </button>
+      
+      <div className="w-full px-4 py-12 mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+          {/* Brand section */}
+          <div className="md:col-span-1">
             <Link
-              to='/' // Link to navigate to the home page.
-              className='self-center whitespace-nowrap text-lg sm:text-xl font-semibold dark:text-white' // Styling the link.
+              to="/"
+              className="inline-flex items-center mb-6 text-2xl font-bold"
             >
-              <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'> 
-                Sahand&apos;s
+              <span className="px-3 py-2 text-white rounded-lg shadow-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+                Geo&apos;s
               </span>
-              Blog {/* Blog title text.*/}
+              <span className="ml-2 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-400">
+                Blog
+              </span>
             </Link>
+            <p className="max-w-xs mb-6 text-sm text-purple-200">
+              Exploring the world of web development, one project at a time. Join me on this coding journey!
+            </p>
+            
+            {/* Newsletter subscription */}
+            <div className="mb-6">
+              <h4 className="mb-2 text-sm font-semibold text-cyan-300">Stay Updated</h4>
+              <div className="flex">
+                <input 
+                  type="email" 
+                  placeholder="Your email" 
+                  className="w-full px-3 py-2 text-sm border border-purple-500 rounded-l-lg bg-slate-800 focus:outline-none focus:ring-1 focus:ring-cyan-300"
+                />
+                <button className="px-3 py-2 text-sm font-medium transition-colors rounded-r-lg bg-gradient-to-r from-indigo-500 to-purple-500 hover:from-indigo-600 hover:to-purple-600">
+                  Join
+                </button>
+              </div>
+            </div>
           </div>
-          <div className='grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-6'> {/* Grid layout for footer links.*/}
-            <div> {/* Column for "About" links.*/}
-              <Footer.Title title='About' /> {/* Footer title for the section.*/}
-              <Footer.LinkGroup col> {/* Group for footer links.*/}
-                <Footer.Link
-                  href='https://www.100jsprojects.com' // Link to an external site.
-                  target='_blank' // Opens the link in a new tab.
-                  rel='noopener noreferrer' // Security feature for external links.
+          
+          {/* Links sections */}
+          <div className="grid grid-cols-2 gap-8 md:col-span-3 md:grid-cols-3">
+            <div>
+              <Footer.Title title="Explore" className="mb-4 text-base tracking-wider uppercase text-cyan-300" />
+              <Footer.LinkGroup col className="space-y-3">
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
                 >
-                  100 JS Projects // Link text.
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  100 JS Projects
                 </Footer.Link>
-                <Footer.Link
-                  href='/about' // Link to the about page.
-                  target='_blank' // Opens the link in a new tab.
-                  rel='noopener noreferrer' // Security feature for external links.
+                <Footer.Link 
+                  href="/about" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
                 >
-                  Sahand&apos;s Blog {/* Link text.*/}
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  Geo&apos;s Blog
+                </Footer.Link>
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
+                >
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  Tutorials
                 </Footer.Link>
               </Footer.LinkGroup>
             </div>
-            <div> {/* Column for "Follow us" links.*/}
-              <Footer.Title title='Follow us' /> {/* Footer title for the section.*/}
-              <Footer.LinkGroup col> {/* Group for footer links.*/}
-                <Footer.Link
-                  href='https://www.github.com/sahandghavidel' // Link to Github profile.
-                  target='_blank' // Opens the link in a new tab.
-                  rel='noopener noreferrer' // Security feature for external links.
+            
+            <div>
+              <Footer.Title title="Connect" className="mb-4 text-base tracking-wider uppercase text-cyan-300" />
+              <Footer.LinkGroup col className="space-y-3">
+                <Footer.Link 
+                  href="https://github.com/george127" 
+                  target="_blank"
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
                 >
-                  Github {/* Link text.*/}
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  GitHub
                 </Footer.Link>
-                <Footer.Link href='#'>Discord</Footer.Link> {/* Link to Discord (URL placeholder).*/}
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
+                >
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  Discord
+                </Footer.Link>
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
+                >
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  LinkedIn
+                </Footer.Link>
               </Footer.LinkGroup>
             </div>
-            <div> {/* Column for "Legal" links.
-              <Footer.Title title='Legal' /> {/* Footer title for the section.*/}
-              <Footer.LinkGroup col>  {/* Group for footer links.*/}
-                <Footer.Link href='#'>Privacy Policy</Footer.Link> {/* Link to Privacy Policy (URL placeholder).*/}
-                <Footer.Link href='#'>Terms &amp; Conditions</Footer.Link> {/* Link to Terms and Conditions (URL placeholder).*/}
+            
+            <div>
+              <Footer.Title title="Legal" className="mb-4 text-base tracking-wider uppercase text-cyan-300" />
+              <Footer.LinkGroup col className="space-y-3">
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
+                >
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  Privacy Policy
+                </Footer.Link>
+                <Footer.Link 
+                  href="#" 
+                  className="flex items-center text-purple-200 transition-colors duration-200 hover:text-cyan-300 group"
+                >
+                  <span className="w-1 h-1 mr-2 transition-transform rounded-full bg-cyan-400 group-hover:scale-125"></span>
+                  Terms & Conditions
+                </Footer.Link>
               </Footer.LinkGroup>
             </div>
           </div>
         </div>
-        <Footer.Divider /> {/* Divider between main footer content and copyright section.*/}
-        <div className='w-full sm:flex sm:items-center sm:justify-between'> {/* Container for copyright and social icons, responsive layout.*/}
+        
+        <Footer.Divider className="my-8 border-purple-700" />
+        
+        <div className="flex flex-col items-center justify-between w-full md:flex-row">
           <Footer.Copyright
-            href='#' // Link for copyright (URL placeholder).
-            by="Sahand's blog" // Copyright notice.
-            year={new Date().getFullYear()} // Current year dynamically rendered.
+            href="#"
+            by="Geo's Blog"
+            year={new Date().getFullYear()}
+            className="font-medium text-purple-300"
           />
-          <div className="flex gap-6 sm:mt-0 mt-4 sm:justify-center"> {/* Flex container for social media icons.*/}
-            <Footer.Icon href='#' icon={BsFacebook}/>{/* Link to Facebook (URL placeholder). */}
-            <Footer.Icon href='#' icon={BsInstagram}/>{/* Link to Instagram (URL placeholder). */}
-            <Footer.Icon href='#' icon={BsTwitter}/>{/* Link to Twitter (URL placeholder). */}
-            <Footer.Icon href='https://github.com/sahandghavidel' icon={BsGithub}/>{/* Link to Github profile. */}
-            <Footer.Icon href='#' icon={BsDribbble}/>{/* Link to Dribbble (URL placeholder). */}
+          
+          <div className="flex mt-4 space-x-4 md:mt-0">
+            <Footer.Icon 
+              href="#" 
+              icon={BsFacebook}
+              className="p-2 text-purple-300 transition-colors rounded-full hover:text-cyan-300 bg-slate-800 hover:bg-slate-700"
+            />
+            <Footer.Icon 
+              href="#" 
+              icon={BsInstagram}
+              className="p-2 text-purple-300 transition-colors rounded-full hover:text-cyan-300 bg-slate-800 hover:bg-slate-700"
+            />
+            <Footer.Icon 
+              href="#" 
+              icon={BsTwitter}
+              className="p-2 text-purple-300 transition-colors rounded-full hover:text-cyan-300 bg-slate-800 hover:bg-slate-700"
+            />
+            <Footer.Icon 
+              href="https://github.com/george127" 
+              icon={BsGithub}
+              className="p-2 text-purple-300 transition-colors rounded-full hover:text-cyan-300 bg-slate-800 hover:bg-slate-700"
+            />
+            <Footer.Icon 
+              href="#" 
+              icon={BsDribbble}
+              className="p-2 text-purple-300 transition-colors rounded-full hover:text-cyan-300 bg-slate-800 hover:bg-slate-700"
+            />
           </div>
         </div>
       </div>

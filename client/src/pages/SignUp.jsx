@@ -64,7 +64,7 @@ setFormData({ ...formData, [e.target.id]: e.target.value.trim(), isAdmin: true }
         <div className='flex-1'>
           <Link to='/' className='text-4xl font-bold dark:text-white'> {/* Logo link */}
             <span className='px-2 py-1 text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
-              Sahand&apos;s
+              Geo&apos;s
             </span>
             Blog
           </Link>

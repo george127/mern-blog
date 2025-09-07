@@ -60,16 +60,16 @@ export default function SignIn() {
   // Render the component
   return (
     <div className='min-h-screen mt-20'> {/* Container with minimum height */}
-      <div className='flex p-3 max-w-3xl mx-auto flex-col md:flex-row md:items-center gap-5'> {/* Flex container for layout */}
+      <div className='flex flex-col max-w-3xl gap-5 p-3 mx-auto md:flex-row md:items-center'> {/* Flex container for layout */}
         {/* Left section */}
         <div className='flex-1'>
-          <Link to='/' className='font-bold dark:text-white text-4xl'> {/* Logo link */}
-            <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'>
-              Sahand&apos;s
+          <Link to='/' className='text-4xl font-bold dark:text-white'> {/* Logo link */}
+            <span className='px-2 py-1 text-white rounded-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>
+              Geo&apos;s
             </span>
             Blog
           </Link>
-          <p className='text-sm mt-5'> {/* Description text */}
+          <p className='mt-5 text-sm'> {/* Description text */}
             This is a demo project. You can sign in with your email and password or with Google.
           </p>
         </div>
@@ -113,7 +113,7 @@ export default function SignIn() {
           </form>
 
           {/* Link to sign up if the user doesn't have an account */}
-          <div className='flex gap-2 text-sm mt-5'>
+          <div className='flex gap-2 mt-5 text-sm'>
             <span>Don&apos;t Have an account?</span>
             <Link to='/sign-up' className='text-blue-500'> {/* Sign up link */}
               Sign Up
