@@ -1,60 +1,84 @@
 export default function About() {
   return (
-    // This div is the container for the whole page. 
-    // 'min-h-screen' ensures that the div takes up at least the full screen height.
-    // 'flex' is a utility that enables Flexbox, 'items-center' centers the content vertically, 
-    // and 'justify-center' centers the content horizontally.
-    <div className='flex items-center justify-center min-h-screen'> 
-
-      {/* The content is wrapped in a div to limit its width to a maximum of 2xl (max-w-2xl) for better readability. 
-      'mx-auto' centers it horizontally, 'p-3' adds padding around the content, and 'text-center' centers the text. */}
-      <div className='max-w-2xl p-3 mx-auto text-center'>
-        
-        {/* Another div is used to contain the actual content. */}
-        <div>
-
-          {/* This is the main heading (h1) for the "About" page. 
-          'text-3xl' sets the font size to 3xl (extra-large), 'font-semibold' makes the text bold, 
-          'text-center' centers the heading, and 'my-7' adds top and bottom margin for spacing. */}
-          <h1 className='text-3xl font-semibold text-center font my-7'>
-            About Geo&apos; Blog
-          </h1>
-
-          {/* This div wraps the paragraphs describing the blog. 
-          'text-md' sets the font size to medium, and 'text-gray-500' changes the text color to gray for a subtle look.
-          'flex flex-col' arranges the paragraphs in a vertical stack (column), and 'gap-6' adds space between the paragraphs. */}
-          <div className='flex flex-col gap-6 text-gray-500 text-md'>
-            
-            {/* Paragraph explaining the blog's purpose and introducing Sahand as the author. 
-            'Welcome to Sahand&apos;s Blog!' is the introductory line. */}
-            <p>
-              Welcome to Geo&apos;s Blog! This blog was created by George Darko
-              as a personal project to share his thoughts and ideas with the
-              world. Sahand is a passionate developer who loves to write about
-              technology, coding, and everything in between.
-            </p>
-
-            {/* Second paragraph giving an overview of the blog’s content. 
-            It describes the topics covered on the blog, such as web development, software engineering, and programming languages. */}
-            <p>
-              On this blog, you&apos;ll find weekly articles and tutorials on topics
-              such as web development, software engineering, and programming
-              languages. George is always learning and exploring new
-              technologies, so be sure to check back often for new content!
-            </p>
-
-            {/* Third paragraph encouraging engagement and interaction in the blog’s comment section.
-            It highlights the ability for users to leave comments, like others' comments, and engage in discussions. */}
-            <p>
-              We encourage you to leave comments on our posts and engage with
-              other readers. You can like other people&apos;s comments and reply to
-              them as well. We believe that a community of learners can help
-              each other grow and improve.
-            </p>
-
-          </div>
+    <div className="flex flex-col items-center justify-center ">
+      {/* Hero Section */}
+      <section className="flex flex-col items-center max-w-5xl gap-10 p-6 mx-auto lg:flex-row lg:py-20">
+        {/* Profile / Blog image */}
+        <div className="flex justify-center lg:w-1/2">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+            alt="About Geo's Blog"
+            className="object-cover w-full max-w-md border shadow-2xl rounded-2xl border-slate-700"
+          />
         </div>
-      </div>
+
+        {/* Blog Info */}
+        <div className="text-center lg:w-1/2 lg:text-left">
+          <h1 className="mb-6 text-4xl font-bold text-purple-400">
+            About Geo&apos;s Blog
+          </h1>
+          <p className="mb-4 leading-relaxed text-gray-400">
+            Welcome to <span className="font-semibold text-cyan-300">Geo&apos;s Blog</span> — 
+            a space created by <span className="text-indigo-500">George Darko</span>, 
+            a passionate developer and lifelong learner. Here, George shares his
+            journey in coding, software engineering, and the ever-evolving tech
+            world.
+          </p>
+          <p className="mb-4 leading-relaxed text-gray-400">
+            This blog features weekly articles and tutorials covering{" "}
+            <span className="font-medium text-purple-500">web development</span>,{" "}
+            <span className="font-medium text-cyan-400">software engineering</span>, 
+            and <span className="font-medium text-indigo-500">programming languages</span>. 
+            Whether you’re a beginner or a seasoned dev, you’ll find valuable insights here.
+          </p>
+          <p className="leading-relaxed text-gray-400">
+            More than just content, this blog is about{" "}
+            <span className="font-semibold text-purple-400">community</span>.  
+            Join the discussion in the comments, share your thoughts, and connect
+            with like-minded learners worldwide.
+          </p>
+        </div>
+      </section>
+
+      {/* Mission & Values */}
+      <section className="grid max-w-5xl gap-8 px-6 py-16 mx-auto md:grid-cols-3">
+        <div className="p-6 transition-transform border shadow-lg rounded-xl hover:scale-105">
+          <img
+            src="https://images.unsplash.com/photo-1581092795360-fd1ca04f995b?auto=format&fit=crop&w=600&q=80"
+            alt="Web Development"
+            className="mb-4 rounded-lg"
+          />
+          <h3 className="mb-2 text-xl font-semibold text-cyan-300">Web Development</h3>
+          <p className="text-sm leading-relaxed text-gray-400">
+            Dive deep into HTML, CSS, JavaScript, React, and MERN stack tutorials designed
+            for real-world projects.
+          </p>
+        </div>
+
+        <div className="p-6 transition-transform border shadow-lg rounded-xl hover:scale-105">
+          <img
+            src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80"
+            alt="Software Engineering"
+            className="mb-4 rounded-lg"
+          />
+          <h3 className="mb-2 text-xl font-semibold text-purple-400">Software Engineering</h3>
+          <p className="text-sm leading-relaxed text-gray-400">
+            Learn principles, patterns, and strategies for building scalable and maintainable software systems.
+          </p>
+        </div>
+
+        <div className="p-6 transition-transform border shadow-lg rounded-xl hover:scale-105">
+          <img
+            src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72?auto=format&fit=crop&w=600&q=80"
+            alt="Programming Languages"
+            className="mb-4 rounded-lg"
+          />
+          <h3 className="mb-2 text-xl font-semibold text-indigo-500">Programming Languages</h3>
+          <p className="text-sm leading-relaxed text-gray-400">
+            Explore the features and ecosystems of multiple languages with practical applications.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
